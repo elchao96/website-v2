@@ -1,10 +1,11 @@
 import * as React from "react";
-import { Link, useStaticQuery, graphql } from "gatsby";
-import "../styles/index.scss";
+import { ReactNode } from "react";
+import { useStaticQuery, graphql } from "gatsby";
+import { Container, Navbar, Nav, ThemeProvider } from "react-bootstrap";
 
 interface ILayoutProps {
   pageTitle: string;
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 const Layout = ({ pageTitle, children }: ILayoutProps) => {
@@ -17,27 +18,41 @@ const Layout = ({ pageTitle, children }: ILayoutProps) => {
       }
     }
   `);
+
   return (
-    <div className="container">
-      <header className="site-title">{data.site.siteMetadata.title}</header>
-      <nav>
-        <ul className="nav-links">
-          <li className="nav-link-item">
-            <Link to="/">Home</Link>
-          </li>
-          <li className="nav-link-item">
-            <Link to="/about">About</Link>
-          </li>
-          <li className="nav-link-item">
-            <Link to="/blog">Blog</Link>
-          </li>
-        </ul>
-      </nav>
+    <Container fluid="sm">
+      <Navbar sticky="top" className="bg-body-tertiary">
+        <Container>
+          <Navbar.Brand>{data.site.siteMetadata.title}</Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="me-auto">
+              <Nav.Link href="/">About</Nav.Link>
+              <Nav.Link href="/experience">Experience</Nav.Link>
+              <Nav.Link href="/projects">Projects</Nav.Link>
+            </Nav>
+            <Nav className="justify-content-end">
+              <Nav.Link
+                href="https://www.linkedin.com/in/elchao96/"
+                target="_blank"
+              >
+                <i className="bi bi-linkedin"></i>
+              </Nav.Link>
+              <Nav.Link href="https://github.com/elchao96" target="_blank">
+                <i className="bi bi-github"></i>
+              </Nav.Link>
+              <Nav.Link href="http://instagram.com/emchao13" target="_blank">
+                <i className="bi bi-instagram"></i>
+              </Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
       <main>
-        <h1 className="heading">{pageTitle}</h1>
+        <h1>{pageTitle}</h1>
         {children}
       </main>
-    </div>
+    </Container>
   );
 };
 
