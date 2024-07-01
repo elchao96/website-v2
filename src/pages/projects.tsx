@@ -5,7 +5,7 @@ import Seo from "../components/seo";
 
 const ProjectsPage: React.FC<PageProps> = () => {
   return (
-    <Layout pageTitle="Blog">
+    <Layout pageTitle="Projects">
       <></>
     </Layout>
   );

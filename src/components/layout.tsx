@@ -1,7 +1,7 @@
 import * as React from "react";
 import { ReactNode } from "react";
 import { useStaticQuery, graphql } from "gatsby";
-import { Container, Navbar, Nav, ThemeProvider } from "react-bootstrap";
+import { Container, Navbar, Nav } from "react-bootstrap";
 
 interface ILayoutProps {
   pageTitle: string;
